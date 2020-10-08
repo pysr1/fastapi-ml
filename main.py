@@ -28,7 +28,7 @@ async def pong():
 @app.post("/predict", response_model=StockOut, status_code=200)
 def get_prediction(payload: StockIn):
     ticker = payload.ticker
-
+    model = train(payload.ticker)
     prediction_list = predict(ticker)
 
     if not prediction_list:
